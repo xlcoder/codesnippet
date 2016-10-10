@@ -1,0 +1,16 @@
+#!/bin/bash
+# server mysql backup
+
+# backup init
+dir=/home/
+user=root
+pwd=arnm3zry
+server=admin
+database=
+date=`date +%Y_%m_%d`
+filename="$server"_"$date".sql
+
+#Script for exec
+cd $dir
+mysqldump -u $user -p$pwd $database > "$filename"
+find $dir -type f -mtime +7 -exec rm {} \;

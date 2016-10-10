@@ -1,0 +1,51 @@
+#!/bin/bash
+
+#Setup Basic Software
+apt-get update
+apt-get install -y vim
+apt-get install -y tmux
+apt-get install -y python-software-properties
+apt-get install -y curl 
+apt-get install -y git
+apt-get install -y nginx
+apt-get install -y php5-fpm
+apt-get install -y php5-cli
+apt-get install -y php5-curl
+apt-get install -y php5-mysql
+apt-get install -y php5-gd
+apt-get install -y php5-mcrypt
+apt-get install -y php5-pear
+
+#MySQL
+pwd=vT4EgBuZ
+echo "mysql-server-5.5 mysql-server/root_password password $pwd" | debconf-set-selections
+echo "mysql-server-5.5 mysql-server/root_password_again password $pwd" | debconf-set-selections
+apt-get install -y mysql-server
+
+#Download VIM Plugin
+mkdir -p ~/.vim ~/.vim/bundle
+cd  ~/.vim 
+git clone https://github.com/tpope/vim-pathogen.git
+cd ~/.vim/bundle
+git clone https://github.com/mattn/emmet-vim.git
+cd ~/.vim/bundle
+git clone https://github.com/scrooloose/nerdtree.git
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-surround.git
+cd ~/.vim/bundle  
+git clone https://github.com/scrooloose/syntastic.git 
+cd ~/.vim  
+cp -r vim-pathogen/autoload ./
+
+#setup Laravel
+cd /home
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+echo extension=mcrypt.so >> /etc/php5/cli/php.ini
+echo extension=mcrypt.so >> /etc/php5/fpm/php.ini
+service php5-fpm restart
+#Chin Mainload Or Foregin
+#composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+#mkdir -p ~/.composer ~/.composer/vendor ~/.composer/vendor/bin
+#composer global require "laravel/installer=~1.1"

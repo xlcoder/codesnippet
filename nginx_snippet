@@ -1,0 +1,84 @@
+#optimizing
+
+events {
+    worker_connections  8096;
+    multi_accept        on;
+    use                 epoll;
+}
+
+
+http { 
+    server_tokens off;
+    sendfile on;
+ 
+    tcp_nopush on;
+    tcp_nodelay on 
+
+    keepalive_timeout 10;
+    client_header_timeout 10;
+    client_body_timeout 10;
+    reset_timedout_connection on;
+    send_timeout 10;
+ 
+    limit_conn_zone $binary_remote_addr zone=addr:5m;
+    limit_conn addr 100;;
+
+    gzip on;
+    gzip_disable "msie6";
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 5;
+    gzip_min_length 1k;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript; 
+}
+
+location ~* \.(jpg|jpeg|gif|png|css|js|ico|xml)$ {
+    access_log        off;
+    log_not_found     off;
+    expires           360d;
+}
+
+#A single HTTP/HTTPS server
+server {
+    listen              80;
+    listen              443 ssl;
+    server_name         www.example.com;
+    ssl_certificate     www.example.com.crt;
+    ssl_certificate_key www.example.com.key;
+    ...
+}
+
+# 301 redirect
+server {
+    listen 80;
+    server_name doupaitv.com;
+    return 301 http://www.doupaitv.com$request_uri;
+} 
+
+#SSL opmtion
+http {
+
+    server {
+        listen              443 ssl;
+        server_name         www.example.com;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES256-SHA384:AES256-SHA256:RC4:HIGH:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!AESGCM;
+        ssl_prefer_server_ciphers on;
+        ssl_session_cache shared:SSL:10m;
+        ssl_session_timeout 10m;  
+        keepalive_timeout   70;
+
+        ssl_certificate     www.example.com.crt;
+        ssl_certificate_key www.example.com.key;
+        ...
+
+#Limiting Access
+location / {
+    allow 192.168.1.1/24;
+    allow 127.0.0.1;
+    deny 192.168.1.2;
+    deny all;
+}
+

@@ -1,0 +1,17 @@
+# server file backup
+
+# init
+dir_backup=/home/test_back
+dir_target=
+server=code
+
+#Script for exec
+cd $dir_backup
+
+date=`date +%Y_%m_%d`
+
+filename="$server-$date"
+
+tar -cvzf "$filename".tar.gz $dir_target
+
+#find $dir  -type f -mtime +7 -exec rm {} \;

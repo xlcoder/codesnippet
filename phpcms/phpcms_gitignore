@@ -1,0 +1,25 @@
+#!/bin/bash
+
+dir=/Users/xlgeek/Sites/eight_home/
+
+#cache file
+touch "$dir"caches/bakup/.gitkeep
+touch "$dir"caches/caches_admin/caches_data/.gitkeep
+touch "$dir"caches/caches_commons/caches_data/.gitkeep
+touch "$dir"caches/caches_content/caches_data/.gitkeep
+touch "$dir"caches/caches_linkage/caches_data/.gitkeep
+touch "$dir"caches/caches_member/caches_data/.gitkeep
+touch "$dir"caches/caches_model/caches_data/.gitkeep
+touch "$dir"caches/caches_scan/caches_data/.gitkeep
+#touch /Users/xlgeek/Sites/eight_home/caches/caches_search/caches_data/.gitkeep
+touch "$dir"caches/caches_tpl_data/caches_data/.gitkeep
+#touch /Users/xlgeek/Sites/eight_home/caches/caches_wap/caches_data/.gitkeep
+touch "$dir"caches/poster_js/.gitkeep
+touch "$dir"caches/sessions/.gitkeep
+touch "$dir"caches/vote_js/.gitkeep
+
+#phpsso cache file
+touch "$dir"phpsso_server/uploadfile/avatar/.gitkeep
+touch "$dir"phpsso_server/caches/caches_admin/caches_data/.gitkeep
+touch "$dir"uploadfile/.gitkeep
+

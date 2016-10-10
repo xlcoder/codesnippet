@@ -1,0 +1,5 @@
+#!/bin/bash
+# rsync [option] source destination
+
+#backup $name server 
+rsync -avzh --delete code_test:/home/backup/ /home/code_back/

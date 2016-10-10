@@ -1,0 +1,21 @@
+#global settings:
+git config --global user.name ""
+git config --global user.email ""
+
+#Create git repository:
+cd l5bauty
+git init
+touch README.md
+git add README.md
+git commit -m "first commit"
+git remote add origin https://git.oschina.net/xlgeek/l5bauty.git
+git push -u origin master
+
+#Existing project:
+cd existing_git_repo
+git remote add origin git@git.oschina.net:xlgeek/l5bauty.git 
+git push -u origin master
+
+#Git ignore file pri change
+git config core.filemode false
+

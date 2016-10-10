@@ -1,0 +1,7 @@
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+cat ~/.ssh/pokerdao/id_rsa.pub | ssh root@173.255.217.228 "cat >>~/.ssh/authorized_keys"
+
+cd ~/.vim/bundle git clone https://github.com/scrooloose/nerdtree.git
+cd ~/.vim/bundle git clone https://github.com/scrooloose/syntastic.git

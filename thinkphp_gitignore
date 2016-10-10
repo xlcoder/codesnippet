@@ -1,0 +1,20 @@
+﻿#!/usr/local/bin/bash
+
+dir=/Users/xlgeek/Sites/pokerren/
+
+touch "$dir"Application/Common/Conf/.gitkeep
+
+touch "$dir"Application/Runtime/Cache/.gitkeep
+
+touch "$dir"Application/Runtime/Cache/Admin/.gitkeep
+
+touch "$dir"Application/Runtime/Data/.gitkeep
+
+touch "$dir"Application/Runtime/Logs/.gitkeep
+
+touch "$dir"Application/Runtime/Logs/Admin/.gitkeep
+
+touch "$dir"Application/Runtime/Logs/Common/.gitkeep
+
+touch "$dir"Application/Runtime/Temp/.gitkeep
+
