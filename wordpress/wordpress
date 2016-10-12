@@ -84,6 +84,9 @@ server {
     access_log /var/log/nginx/access_example.log; 
     error_log /var/log/nginx/error_example.log;
 
+    location ~ /(\.|wp-config\.php|readme\.html|license\.txt) { 
+        deny all; 
+    }
 }
 
 

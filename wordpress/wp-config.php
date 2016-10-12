@@ -87,8 +87,19 @@ define( 'WP_SITEURL', 'http://www.example.com/' );
 define( 'WP_HOME', 'http://www.example.com/' );
 
 /* define auto save edit post */
-define( 'AUTOSAVE_INTERVAL', 160 );
+define( 'AUTOSAVE_INTERVAL', 160);
 
 /* define empty trash */
-define( 'EMPTY_TRASH_DAYS', 15 ); 
+define( 'EMPTY_TRASH_DAYS', 7); 
 
+/* Specify the Number of Post Revisions */
+define( 'WP_POST_REVISIONS', 3);
+
+/* Increasing memory allocated to PHP */
+//define( 'WP_MEMORY_LIMIT', '64M' );
+
+/* Automatic Database Optimizing */
+//define('WP_ALLOW_REPAIR', true);
+
+/* automatic updates for security releases */https://kinsta.com/blog/wp-config-php/
+define( 'AUTOMATIC_UPDATER_DISABLED', true );
