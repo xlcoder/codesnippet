@@ -1,9 +1,2 @@
 #!/bin/bash
 
-ssh pokerdao_prd echo "pokerdao Test Successful"
-ssh sp_prd echo "sp Test Successful"
-ssh bodog_prd echo "bodog Test Successful"
-ssh pokerstar_prd echo "pokerstar Test Successful"
-ssh 888_prd echo "888 Test Successful"
-ssh admin_prd echo " admin Test Successful"
-ssh contact_prd echo "contact Test Successful"

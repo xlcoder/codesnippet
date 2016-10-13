@@ -4,7 +4,7 @@
 # backup init
 dir=/home/
 user=root
-pwd=arnm3zry
+pwd=
 server=admin
 database=
 date=`date +%Y_%m_%d`

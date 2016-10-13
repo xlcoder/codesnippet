@@ -1,14 +1,2 @@
 #!/bin/bash
 
-ssh blog_prd echo "blog Test Successful"
-ssh mgnet_prd echo "mgnet Test Successful"
-ssh fandou_prd echo "fandou Test Successful"
-ssh kungfuling_prd echo "kungfuling Test Successful"
-ssh doupai_prd echo "doupai Test Successful"
-ssh video_repository_prd echo " video Test Successful"
-ssh pukeguwen_prd echo "pukeguwen Test Successful"
-ssh mmasiatech_prd echo "mmasiatech Test Successful"
-ssh code_test echo "code_test Test Successful"
-ssh pokerren_prd echo "pokerren Test Successful"
-ssh zyb_prd echo "zye Test Successful"
-ssh ss_prd echo "ss Test Successful"
