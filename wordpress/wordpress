@@ -36,7 +36,7 @@ server {
 	location / {
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.
-		try_files $uri $uri/ =404;
+		try_files $uri $uri/ /index.php?$args;
 		# Uncomment to enable naxsi on this location
 		# include /etc/nginx/naxsi.rules
 	}
@@ -76,10 +76,13 @@ server {
 		deny all;
 	}
 
-    if (!-e $request_filename)
-    {
-        rewrite ^(.+)$ /index.php?q=$1 last;
-    }
+    #if (!-e $request_filename)
+    #{
+        #Use for Root Bedrock
+        #rewrite /wp-admin$ $scheme://$host$uri/ permanent;
+        #rewrite ^(/[^/]+)?(/wp-.*) /wp$2 last;
+        #rewrite ^(/[^/]+)?(/.*\.php) /wp$2 last;
+    #}
 
     access_log /var/log/nginx/access_example.log; 
     error_log /var/log/nginx/error_example.log;

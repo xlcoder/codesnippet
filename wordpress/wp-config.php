@@ -83,8 +83,8 @@ require_once(ABSPATH . 'wp-settings.php');
 define( 'FS_METHOD', 'direct');
 
 /* define wordpress url */
-define( 'WP_SITEURL', 'http://www.example.com/' );
-define( 'WP_HOME', 'http://www.example.com/' );
+define('WP_HOME','http://' . $_SERVER['HTTP_HOST']);
+define('WP_SITEURL','http://' . $_SERVER['HTTP_HOST']);
 
 /* define auto save edit post */
 define( 'AUTOSAVE_INTERVAL', 160);

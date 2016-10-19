@@ -40,4 +40,4 @@ function custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 // Remove Admin bar
-add_filter('show_admin_bar', 'remove_admin_bar'); 
+add_filter('show_admin_bar', '__return_false'); 
