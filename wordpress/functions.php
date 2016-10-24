@@ -23,6 +23,7 @@ function headerCleanup()
     remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
     remove_action('wp_head', 'rel_canonical');
     remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+    remove_action("wp_head", "ls_meta_generator",9); //delete layerslider meta generator
 }
 
 add_action('after_setup_theme', 'headerCleanup');
