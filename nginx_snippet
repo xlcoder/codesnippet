@@ -50,11 +50,18 @@ server {
     ...
 }
 
-# 301 redirect
+# 301 redirect for ssl
 server {
     listen 80;
-    server_name doupaitv.com;
-    return 301 http://www.doupaitv.com$request_uri;
+    server_name example.com;
+    return 301 http://www.example.com$request_uri;
+} 
+
+# 301 redirect for ssl
+server {
+    listen 80;
+    server_name example.com www.example.com;
+    return 301 http://www.example.com$request_uri;
 } 
 
 #SSL opmtion
