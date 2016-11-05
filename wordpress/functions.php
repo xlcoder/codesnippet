@@ -1,7 +1,12 @@
-// Remove Admin bar
+<?php
+/*
+ *Remove Admin bar
+ */
 add_filter('show_admin_bar', '__return_false'); 
 
-//clean theme header load
+/*
+ *clean theme header load
+ */
 function headerCleanup() 
 {
     remove_filter( 'wp_head', 'print_emoji_detection_script', 7 );  // remove emojis
@@ -17,25 +22,45 @@ function headerCleanup()
 }
 add_filter('after_setup_theme', 'headerCleanup');
 
-//hook css and script
+/*
+ *hook css and script
+ */
 function hookAssets()
 {
-	  wp_enqueue_style( 'theme-style', get_stylesheet_uri() ); // load default style.css
-	  wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/reset.css' ) ); // load custom define css
+	  wp_enqueue_style( 'develop-bootstrap', get_stylesheet_directory_uri() . '/asset/css/bootstrap.css', "", null ); // load custom define css
+	  wp_enqueue_style( 'develop-style', get_stylesheet_uri(), "", null ); // load default style.css
 
-	  wp_enqueue_script( 'owl-carousel', get_stylesheet_directory_uri() . '/owl.carousel.js', array( 'jquery' ) ); // load JS dependency
-    wp_enqueue_script( 'theme-scripts', get_stylesheet_directory_uri() . '/website-scripts.js', array( 'owl-carousel', 'jquery' ), '1.0', true ); // load custom define JS, default false is in head
+	  wp_enqueue_script( 'develop-jquery', get_stylesheet_directory_uri() . '/asset/bower_vendor/jquery/jquery.min.js', "", null, true ); // load JS dependency
+	  wp_enqueue_script( 'develop-bootstrap-js', get_stylesheet_directory_uri() . '/asset/bower_vendor/bootstrap/dist/js/bootstrap.min.js', "", null, true ); // load JS dependency
+
 }
-add_filter("wp_enqueue_script", "hookScriptAndCss")
+add_action("wp_enqueue_scripts", "hookAssets");
 
-//Modify excerpt length and more style
-function custom_excerpt_more( $more ) {
+/*
+ *Modify excerpt length and more style
+ */
+function custom_excerpt_more($more) {
     return "";
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
-function custom_excerpt_length( $length ) {
+function custom_excerpt_length($length) {
     return 80;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
+ 
+/**
+ * Customize the title for the home page, if one is not set.
+ *
+ * @param string $title The original title.
+ * @return string The title to use.
+ */
+function wpdocs_hack_wp_title_for_home($title)
+{
+  if ( empty( $title ) && ( is_home() || is_front_page() ) ) {
+    $title = get_bloginfo("name") . ' | ' . get_bloginfo( 'description' );
+  }
+  return $title;
+}
+add_filter( 'wp_title', 'wpdocs_hack_wp_title_for_home' );
