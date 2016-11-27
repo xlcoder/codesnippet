@@ -12,5 +12,5 @@ filename="$server"_"$date".sql
 
 #Script for exec
 cd $dir
-mysqldump -u $user -p$pwd $database > "$filename"
-find $dir -type f -mtime +7 -exec rm {} \;
+mysqldump -u $user -p$pwd --skip-lock-tables $database > "$filename"
+find $dir -type f -mtime +3 -delete;
