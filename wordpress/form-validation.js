@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
                 dataType: "JSON",
                 data: formData,
                 beforeSend: function() {
-                  $(".msgSubmit").text("请稍候,邮件正在发送中...");
+                  $(".msgSubmit").addClass("alert alert-info").text("请稍候,邮件正在发送中...");
                 },
                 success: function(text) {
                   if (text.status == "success"){
