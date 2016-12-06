@@ -148,3 +148,8 @@ function eventFormCallBack()
 }
 add_filter('wp_ajax_event_form', 'eventFormCallBack');
 add_filter('wp_ajax_nopriv_event_form', 'eventFormCallBack');
+
+/*
+ * Enable support for Post Formats.
+ */
+add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'audio', 'quote', 'link', 'gallery',) );
