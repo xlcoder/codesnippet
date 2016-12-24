@@ -1,0 +1,18 @@
+#!/bin/bash
+#Variable
+rootdir=
+nginxfile=
+databasename=
+pwd=
+server=
+
+#Setp 1:Rsync Upload
+rsync --ignore-existing -vzrh ./web/app/uploads $server:/var/www/$rootdir/web/app/
+
+#Step 2: Git Clone And Composer Update
+ssh $server "cd /var/www/$rootdir; git pull" 
+
+#Step 3:Database 
+ssh localphp7 "cd /var/www/$rootdir; mysqldump -u root -p123456abc $databasename > $databasename\_update\.sql"
+scp ./$databasename\_update.sql $server:/tmp
+ssh $server "cd /tmp; mysql -u root -p$pwd $databasename < $databasename\_update\.sql"

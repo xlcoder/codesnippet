@@ -1,0 +1,31 @@
+#!/bin/bash
+#Variable
+rootdir=
+nginxfile=
+databasename=
+pwd=
+server=
+
+
+#Step 1: Nginx file
+scp ./$nginxfile $server:/etc/nginx/sites-available
+ssh $server "ln -s /etc/nginx/sites-available/$nginxfile /etc/nginx/sites-enabled" 
+ssh $server "service nginx restart"
+
+#Step 2: Git Clone And Composer Update
+ssh $server "cd /var/www; git clone git@github.com:xlcoder/deploytest.git" 
+ssh $server "cd /var/www/$rootdir; composer update" 
+
+#Step 3:Create database
+ssh $server "mysql -u root -p$pwd -e \"create database $databasename\""
+
+#Step 4:Evn file
+scp ./.env.online $server:/var/www/$rootdir
+ssh $server "cd /var/www/$rootdir; mv .env.online .env"
+
+#Step 5:Database 
+ssh localphp7 "cd /var/www/$rootdir; mysqldump -u root -p123456abc $databasename > $databasename\_init\.sql"
+scp ./$databasename\_init.sql $server:/tmp
+ssh $server "cd /tmp; mysql -u root -p$pwd $databasename < $databasename\_init\.sql"
+
+

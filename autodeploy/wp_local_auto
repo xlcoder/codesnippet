@@ -1,0 +1,27 @@
+#!/bin/bash
+#Variable
+rootdir=
+nginxfile=
+databasename=
+pwd=
+
+#Step 1: Nginx file
+sudo cp /var/www/$rootdir/$nginxfile /etc/nginx/sites-available
+sudo ln -s /etc/nginx/sites-available/$nginxfile /etc/nginx/sites-enabled
+sudo service nginx restart
+
+#Step 2: Wordpress Bedrock
+sudo cp -r /var/www/wordpress/* /var/www/$rootdir/
+sudo cp -r /var/www/wordpress/.gitignore /var/www/$rootdir/
+cd /var/www/$rootdir
+sudo composer update
+
+#Step 3:Create database
+mysql -u root -p$pwd -e "create database $databasename"
+
+#Setp 4: Cp .evn
+sudo cp /var/www/wordpress/.env.example /var/www/$rootdir/.env
+
+
+
+

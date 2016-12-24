@@ -49,7 +49,7 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 echo extension=mcrypt.so >> /etc/php/7.0/cli/php.ini
 echo extension=mcrypt.so >> /etc/php/7.0/fpm/php.ini
-service php5-fpm restart
+service php7.0-fpm restart
 #Chin Mainload Or Foregin
 #composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
