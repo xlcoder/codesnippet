@@ -1,0 +1,24 @@
+#!/bin/bash
+#Variable
+rootdir=
+nginxfile=
+databasename=
+pwd=
+
+#Step 1: Nginx file
+sudo cp /var/www/$nginxfile /etc/nginx/sites-available
+sudo ln -s /etc/nginx/sites-available/$nginxfile /etc/nginx/sites-enabled
+sudo service nginx restart
+
+#Step 2: Composer Laravel Framework   
+cd /var/www/
+sudo composer create-project laravel/laravel $rootdir "5.1.*"
+
+#Step 3:Create database
+mysql -u root -p$pwd -e "create database $databasename"
+
+
+
+
+
+
