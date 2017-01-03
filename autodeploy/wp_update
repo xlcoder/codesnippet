@@ -1,7 +1,6 @@
 #!/bin/bash
 #Variable
 rootdir=
-nginxfile=
 databasename=
 pwd=
 server=
