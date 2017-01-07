@@ -13,7 +13,7 @@ ssh $server "ln -s /etc/nginx/sites-available/$nginxfile /etc/nginx/sites-enable
 ssh $server "service nginx restart"
 
 #Step 2: Git Clone And Composer Update
-ssh $server "cd /var/www; git clone git@github.com:xlcoder/deploytest.git" 
+ssh $server "cd /var/www; git clone " 
 ssh $server "cd /var/www/$rootdir; composer update" 
 
 #Step 3:Create database
@@ -29,3 +29,7 @@ scp ./$databasename\_init.sql $server:/tmp
 ssh $server "cd /tmp; mysql -u root -p$pwd $databasename < $databasename\_init\.sql"
 
 
+#Step 6:Linux ACL
+ssh $server "cd /var/www; chown -R www-data:www-data ./$rootdir";
+ssh $server "cd /var/www; chmod -R 755 ./$rootdir";
+ssh $server "cd /var/www/$rootdir; git config core.filemode false" 
