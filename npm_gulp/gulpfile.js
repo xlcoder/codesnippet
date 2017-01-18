@@ -21,7 +21,11 @@ gulp.task("less", function(){
  *contact css and js
  */
 gulp.task("pack-js", function(){
-    return gulp.src(["./js/jquery.min.js", "./js/bootstrap.min.js", "./js/main.js"])
+    return gulp.src([
+                        "./js/jquery.min.js",
+                        "./js/bootstrap.min.js",
+                        "./js/main.js"
+                    ])
         .pipe(concat("all.js"))
         //.pipe(minify({
             //ext: {

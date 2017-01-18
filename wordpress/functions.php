@@ -235,3 +235,24 @@ function bootstrap_breadcrumb($custom_home_icon = false, $custom_post_types = fa
 	}
 }
 
+
+/*
+ *Add class For next/previous link
+ */
+function posts_link_attributes() {
+    return 'class="btn-item"';
+}
+add_filter('next_post_link_attribute', 'posts_link_attributes');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes');
+
+function add_class_previous_post_link($html){
+    $html = str_replace('<a','<a class="btn-item"',$html);
+    return $html;
+}
+add_filter('previous_post_link','add_class_previous_post_link',10,1);
+
+function add_class_next_post_link($html){
+    $html = str_replace('<a','<a class="btn-item"',$html);
+    return $html;
+}
+add_filter('next_post_link','add_class_next_post_link',10,1);
