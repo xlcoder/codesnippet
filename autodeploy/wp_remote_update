@@ -1,0 +1,17 @@
+#!/bin/bash
+#Variable
+rootdir=
+databasename=
+pwd=
+server=
+
+#Setp 1:Rsync Upload
+rsync --ignore-existing -vzrh $server:/var/www/$rootdir/web/app/uploads ./web/app/
+
+#Step 2: Git Clone And Composer Update
+git pull
+
+#Step 3:Database Remote and Local
+ssh $server "cd /tmp; mysqldump -u root -p$pwd $databasename > $databasename\_remote\.sql"
+scp $server:/tmp/$databasename\_remote.sql ./ 
+ssh localphp7 "cd /var/www/$rootdir; mysql -u root -p123456abc $databasename < $databasename\_remote\.sql"
