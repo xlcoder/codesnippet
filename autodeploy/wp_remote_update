@@ -12,6 +12,6 @@ rsync --ignore-existing -vzrh $server:/var/www/$rootdir/web/app/uploads ./web/ap
 git pull
 
 #Step 3:Database Remote and Local
-ssh $server "cd /tmp; mysqldump -u root -p$pwd $databasename > $databasename\_remote\.sql"
+ssh $server "cd /tmp; mysqldump -u root -p$pwd --default-character-set=utf8 $databasename > $databasename\_remote\.sql"
 scp $server:/tmp/$databasename\_remote.sql ./ 
-ssh localphp7 "cd /var/www/$rootdir; mysql -u root -p123456abc $databasename < $databasename\_remote\.sql"
+ssh localphp7 "cd /var/www/$rootdir; mysql -u root -p123456abc --default-character-set=utf8 $databasename < $databasename\_remote\.sql"

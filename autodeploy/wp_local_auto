@@ -17,7 +17,7 @@ cd /var/www/$rootdir
 sudo composer update
 
 #Step 3:Create database
-mysql -u root -p$pwd -e "create database $databasename"
+mysql -u root -p$pwd -e "create database $databasename default CHARACTER SET utf8 COLLATE utf8_general_ci"
 
 #Setp 4: Cp .evn
 sudo cp /var/www/wordpress/.env.example /var/www/$rootdir/.env
