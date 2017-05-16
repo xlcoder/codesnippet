@@ -15,9 +15,13 @@ cd /var/www/
 sudo composer create-project laravel/laravel $rootdir "5.1.*"
 
 #Step 3:Create database
-mysql -u root -p$pwd -e "create database $databasename"
+mysql -u root -p$pwd -e "create database $databasename default CHARACTER SET utf8 COLLATE utf8_general_ci"
 
-
+#Setp 4:Bower
+cd $rootdir
+cp /var/www/codesnippet/laravel/bower.json ./
+cp /var/www/codesnippet/laravel/.bowerrc ./
+mkdir bower_vendor
 
 
 
