@@ -1,0 +1,49 @@
+.contact-header {
+  height: 308px;
+  text-align: center;
+  background: url("../img/1920_308.jpg");
+}
+.contact-header > h1 {
+  margin-top: 120px;
+}
+.contact-header > h1,
+.contact-header h3 {
+  color: #fff;
+}
+.contact-header-nav h4,
+.contact-header-nav p {
+  color: #fff;
+}
+.divmargin100 {
+  margin-top: 100px;
+}
+.divmargin20 {
+  margin-top: 20px;
+}
+.divmargin75 {
+  margin-top: 75px;
+}
+.divpadding20 {
+  padding-top: 35px;
+}
+.footer_top {
+  background: #262626;
+}
+.footer_top h4 {
+  text-align: center;
+  color: #fff;
+}
+.footer_top p,
+.footer_top ul li {
+  color: #818181;
+}
+.footer_top ul {
+  text-align: center;
+}
+.footer_bottom {
+  background: #1b1b1b;
+}
+.footer_bottom p {
+  padding-top: 15px;
+  color: #818181;
+}
